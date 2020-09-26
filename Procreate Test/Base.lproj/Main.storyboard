@@ -37,8 +37,11 @@
                                             <constraint firstAttribute="width" constant="30" id="kQw-CZ-bxd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="pencil.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="toggleMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J5k-Rp-f5p"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
@@ -55,26 +58,29 @@
                                 <rect key="frame" x="0.0" y="50" width="1366" height="974"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3e-Hb-eh9" userLabel="MainView" customClass="RoundedView" customModule="Procreate_Test" customModuleProvider="target">
-                                <rect key="frame" x="205" y="894" width="956" height="130"/>
+                                <rect key="frame" x="307.5" y="1024" width="751" height="130"/>
                                 <subviews>
                                     <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nW9-di-HO0" userLabel="Color View">
-                                        <rect key="frame" x="0.0" y="0.0" width="956" height="130"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="751" height="130"/>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lhS-OA-BtN" userLabel="Slider Stack">
-                                        <rect key="frame" x="140" y="13" width="676" height="104"/>
+                                        <rect key="frame" x="140" y="13" width="471" height="104"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-p1-SeH" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="-4" width="680" height="36"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-p1-SeH" userLabel="Hue" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
+                                                <rect key="frame" x="-2" y="-4" width="475" height="36"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
                                                         <real key="value" value="0.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="thickness">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tws-5T-rtp" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="34" width="680" height="36"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tws-5T-rtp" userLabel="Sat" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
+                                                <rect key="frame" x="-2" y="34" width="475" height="36"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
@@ -86,10 +92,13 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="maxColor">
                                                         <color key="value" red="0.1529411765" green="0.72156862749999995" blue="0.89019607840000003" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="thickness">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J76-QP-Z0Z" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="72" width="680" height="36"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J76-QP-Z0Z" userLabel="Bright" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
+                                                <rect key="frame" x="-2" y="72" width="475" height="36"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
@@ -101,12 +110,15 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="maxColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="trackBorderWidth">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a4L-d2-KZY" userLabel="Text Stack">
-                                        <rect key="frame" x="816" y="23" width="120" height="84.5"/>
+                                        <rect key="frame" x="611" y="23" width="120" height="84.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hue" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Voq-rC-WA9">
                                                 <rect key="frame" x="5" y="0.0" width="110" height="21.5"/>
@@ -213,15 +225,21 @@
                             <constraint firstItem="XZS-Ia-6cz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PLY-A5-eDT"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Sax-FH-TDH"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TZQ-fX-RJ3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="X3e-Hb-eh9" secondAttribute="bottom" id="Yrf-fC-m9U"/>
+                            <constraint firstAttribute="bottom" secondItem="X3e-Hb-eh9" secondAttribute="bottom" constant="-130" id="Yrf-fC-m9U"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iAh-7C-VT4"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="top" secondItem="XZS-Ia-6cz" secondAttribute="bottom" id="idz-Yd-MIM"/>
-                            <constraint firstItem="iB9-yW-Aw6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="nqx-gT-8yo"/>
+                            <constraint firstItem="iB9-yW-Aw6" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="nqx-gT-8yo"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pIO-Sm-sWE"/>
-                            <constraint firstItem="X3e-Hb-eh9" firstAttribute="width" secondItem="iB9-yW-Aw6" secondAttribute="width" multiplier="0.7" id="zYz-Gk-uXZ"/>
+                            <constraint firstItem="X3e-Hb-eh9" firstAttribute="width" secondItem="iB9-yW-Aw6" secondAttribute="width" multiplier="0.55" id="zYz-Gk-uXZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="BrightnessSlider" destination="J76-QP-Z0Z" id="g0F-BV-TAZ"/>
+                        <outlet property="HueSlider" destination="w5e-p1-SeH" id="ZFt-Ln-gpG"/>
+                        <outlet property="SaturationSlider" destination="tws-5T-rtp" id="w1r-Ze-awf"/>
+                        <outlet property="mainView" destination="X3e-Hb-eh9" id="4XN-rO-VHo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

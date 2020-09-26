@@ -17,6 +17,7 @@
 		B670C6BA251F3DAD000D6C9A /* GradientSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C6B9251F3DAD000D6C9A /* GradientSlider.swift */; };
 		B670C6BC251F40E7000D6C9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C6BB251F40E7000D6C9A /* ViewController.swift */; };
 		B670C6BF251F6A13000D6C9A /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C6BE251F6A13000D6C9A /* RoundedView.swift */; };
+		B670C6C2251F6C7C000D6C9A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C6C1251F6C7C000D6C9A /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		B670C6B9251F3DAD000D6C9A /* GradientSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientSlider.swift; sourceTree = "<group>"; };
 		B670C6BB251F40E7000D6C9A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B670C6BE251F6A13000D6C9A /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		B670C6C1251F6C7C000D6C9A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		B670C68E251F15B0000D6C9A /* Procreate Test */ = {
 			isa = PBXGroup;
 			children = (
+				B670C6C0251F6C60000D6C9A /* Extension */,
 				B670C6B5251F18B6000D6C9A /* Fonts */,
 				B670C6B2251F17DC000D6C9A /* Model */,
 				B670C6B1251F17CD000D6C9A /* View */,
@@ -146,6 +149,14 @@
 				B670C6B9251F3DAD000D6C9A /* GradientSlider.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		B670C6C0251F6C60000D6C9A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B670C6C1251F6C7C000D6C9A /* UIView.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 			files = (
 				B670C6BA251F3DAD000D6C9A /* GradientSlider.swift in Sources */,
 				B670C690251F15B0000D6C9A /* AppDelegate.swift in Sources */,
+				B670C6C2251F6C7C000D6C9A /* UIView.swift in Sources */,
 				B670C6BC251F40E7000D6C9A /* ViewController.swift in Sources */,
 				B670C6BF251F6A13000D6C9A /* RoundedView.swift in Sources */,
 				B670C692251F15B0000D6C9A /* SceneDelegate.swift in Sources */,
