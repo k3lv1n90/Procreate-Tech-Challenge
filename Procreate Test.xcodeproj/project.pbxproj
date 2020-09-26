@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		B670C690251F15B0000D6C9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C68F251F15B0000D6C9A /* AppDelegate.swift */; };
 		B670C692251F15B0000D6C9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C691251F15B0000D6C9A /* SceneDelegate.swift */; };
-		B670C694251F15B0000D6C9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C693251F15B0000D6C9A /* ViewController.swift */; };
 		B670C697251F15B0000D6C9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B670C695251F15B0000D6C9A /* Main.storyboard */; };
 		B670C699251F15B2000D6C9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B670C698251F15B2000D6C9A /* Assets.xcassets */; };
 		B670C69C251F15B2000D6C9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B670C69A251F15B2000D6C9A /* LaunchScreen.storyboard */; };
 		B670C6A7251F15B2000D6C9A /* Procreate_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C6A6251F15B2000D6C9A /* Procreate_TestTests.swift */; };
+		B670C6B7251F18C3000D6C9A /* SF in Resources */ = {isa = PBXBuildFile; fileRef = B670C6B6251F18C3000D6C9A /* SF */; };
+		B670C6BA251F3DAD000D6C9A /* GradientSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C6B9251F3DAD000D6C9A /* GradientSlider.swift */; };
+		B670C6BC251F40E7000D6C9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C6BB251F40E7000D6C9A /* ViewController.swift */; };
+		B670C6BF251F6A13000D6C9A /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C6BE251F6A13000D6C9A /* RoundedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +33,6 @@
 		B670C68C251F15B0000D6C9A /* Procreate Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Procreate Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B670C68F251F15B0000D6C9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B670C691251F15B0000D6C9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B670C693251F15B0000D6C9A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B670C696251F15B0000D6C9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B670C698251F15B2000D6C9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B670C69B251F15B2000D6C9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +40,10 @@
 		B670C6A2251F15B2000D6C9A /* Procreate TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Procreate TestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B670C6A6251F15B2000D6C9A /* Procreate_TestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procreate_TestTests.swift; sourceTree = "<group>"; };
 		B670C6A8251F15B2000D6C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B670C6B6251F18C3000D6C9A /* SF */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SF; sourceTree = "<group>"; };
+		B670C6B9251F3DAD000D6C9A /* GradientSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientSlider.swift; sourceTree = "<group>"; };
+		B670C6BB251F40E7000D6C9A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B670C6BE251F6A13000D6C9A /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +85,12 @@
 		B670C68E251F15B0000D6C9A /* Procreate Test */ = {
 			isa = PBXGroup;
 			children = (
+				B670C6B5251F18B6000D6C9A /* Fonts */,
+				B670C6B2251F17DC000D6C9A /* Model */,
+				B670C6B1251F17CD000D6C9A /* View */,
+				B670C6B3251F17E7000D6C9A /* Controller */,
 				B670C68F251F15B0000D6C9A /* AppDelegate.swift */,
 				B670C691251F15B0000D6C9A /* SceneDelegate.swift */,
-				B670C693251F15B0000D6C9A /* ViewController.swift */,
 				B670C695251F15B0000D6C9A /* Main.storyboard */,
 				B670C698251F15B2000D6C9A /* Assets.xcassets */,
 				B670C69A251F15B2000D6C9A /* LaunchScreen.storyboard */,
@@ -97,6 +106,46 @@
 				B670C6A8251F15B2000D6C9A /* Info.plist */,
 			);
 			path = "Procreate TestTests";
+			sourceTree = "<group>";
+		};
+		B670C6B1251F17CD000D6C9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B670C6B8251F3D9C000D6C9A /* Others */,
+				B670C6BE251F6A13000D6C9A /* RoundedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B670C6B2251F17DC000D6C9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B670C6B3251F17E7000D6C9A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B670C6BB251F40E7000D6C9A /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B670C6B5251F18B6000D6C9A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B670C6B6251F18C3000D6C9A /* SF */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B670C6B8251F3D9C000D6C9A /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				B670C6B9251F3DAD000D6C9A /* GradientSlider.swift */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +232,7 @@
 				B670C69C251F15B2000D6C9A /* LaunchScreen.storyboard in Resources */,
 				B670C699251F15B2000D6C9A /* Assets.xcassets in Resources */,
 				B670C697251F15B0000D6C9A /* Main.storyboard in Resources */,
+				B670C6B7251F18C3000D6C9A /* SF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +250,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B670C694251F15B0000D6C9A /* ViewController.swift in Sources */,
+				B670C6BA251F3DAD000D6C9A /* GradientSlider.swift in Sources */,
 				B670C690251F15B0000D6C9A /* AppDelegate.swift in Sources */,
+				B670C6BC251F40E7000D6C9A /* ViewController.swift in Sources */,
+				B670C6BF251F6A13000D6C9A /* RoundedView.swift in Sources */,
 				B670C692251F15B0000D6C9A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,7 +424,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.2iins.com.Procreate-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -390,7 +442,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.2iins.com.Procreate-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
