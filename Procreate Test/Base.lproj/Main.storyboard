@@ -77,6 +77,9 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="thickness">
                                                         <real key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="minColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="1" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tws-5T-rtp" userLabel="Sat" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
@@ -162,6 +165,9 @@
                                                             <constraint firstAttribute="height" constant="45" id="pV3-XH-04r"/>
                                                         </constraints>
                                                         <state key="normal" image="Reset"/>
+                                                        <connections>
+                                                            <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7r8-xh-96X"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bG-Wv-Ixe" userLabel="Preview">
                                                         <rect key="frame" x="55" y="0.0" width="45" height="45"/>
@@ -170,6 +176,10 @@
                                                             <constraint firstAttribute="width" constant="45" id="jax-mz-hek"/>
                                                         </constraints>
                                                         <state key="normal" image="Preview"/>
+                                                        <connections>
+                                                            <action selector="previewButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wbz-tG-0d5"/>
+                                                            <action selector="previewButtonTouchedDown:" destination="BYZ-38-t0r" eventType="touchDown" id="J9p-GY-pZP"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -183,6 +193,9 @@
                                                             <constraint firstAttribute="width" constant="45" id="6f0-7E-E5O"/>
                                                         </constraints>
                                                         <state key="normal" image="Undo"/>
+                                                        <connections>
+                                                            <action selector="undoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z47-T3-vJF"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvu-3t-nWp" userLabel="Redo">
                                                         <rect key="frame" x="55" y="0.0" width="45" height="45"/>
@@ -191,6 +204,9 @@
                                                             <constraint firstAttribute="height" constant="45" id="MnH-71-ZmR"/>
                                                         </constraints>
                                                         <state key="normal" image="Redo"/>
+                                                        <connections>
+                                                            <action selector="redoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VCK-In-qvC"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -238,6 +254,7 @@
                     <connections>
                         <outlet property="brightnessSlider" destination="J76-QP-Z0Z" id="g0F-BV-TAZ"/>
                         <outlet property="hueSlider" destination="w5e-p1-SeH" id="ZFt-Ln-gpG"/>
+                        <outlet property="imagePreview" destination="iB9-yW-Aw6" id="JXm-W1-LfQ"/>
                         <outlet property="mainView" destination="X3e-Hb-eh9" id="4XN-rO-VHo"/>
                         <outlet property="previewButton" destination="1bG-Wv-Ixe" id="qax-11-KN9"/>
                         <outlet property="redoButton" destination="tvu-3t-nWp" id="sU2-xl-ftN"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B65FA42425202CC400E6A256 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65FA42325202CC400E6A256 /* ColorModel.swift */; };
+		B65FA426252040E700E6A256 /* HueCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65FA425252040E700E6A256 /* HueCalculations.swift */; };
 		B670C690251F15B0000D6C9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C68F251F15B0000D6C9A /* AppDelegate.swift */; };
 		B670C692251F15B0000D6C9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C691251F15B0000D6C9A /* SceneDelegate.swift */; };
 		B670C697251F15B0000D6C9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B670C695251F15B0000D6C9A /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		B65FA42325202CC400E6A256 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
+		B65FA425252040E700E6A256 /* HueCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueCalculations.swift; sourceTree = "<group>"; };
 		B670C68C251F15B0000D6C9A /* Procreate Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Procreate Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B670C68F251F15B0000D6C9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B670C691251F15B0000D6C9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				B65FA42325202CC400E6A256 /* ColorModel.swift */,
+				B65FA425252040E700E6A256 /* HueCalculations.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				B65FA42425202CC400E6A256 /* ColorModel.swift in Sources */,
 				B670C690251F15B0000D6C9A /* AppDelegate.swift in Sources */,
 				B670C6C2251F6C7C000D6C9A /* UIView.swift in Sources */,
+				B65FA426252040E700E6A256 /* HueCalculations.swift in Sources */,
 				B670C6BC251F40E7000D6C9A /* ViewController.swift in Sources */,
 				B670C6BF251F6A13000D6C9A /* RoundedView.swift in Sources */,
 				B670C692251F15B0000D6C9A /* SceneDelegate.swift in Sources */,
