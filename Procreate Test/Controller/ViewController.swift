@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     let context = CIContext()
     var initialImage: UIImage?
     var currentImage: UIImage?
+    var sliderState = SliderState.initial
     
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var previewButton: UIButton!
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
     
     @IBAction func undoButtonPressed(_ sender: Any) {
         //go back in time
+       
     }
     
     @IBAction func redoButtonPressed(_ sender: Any) {
@@ -49,13 +51,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func previewButtonTouchedDown(_ sender: Any) {
-       //to hide the view
+        mainView.hideView(hide: true)
+        self.imagePreview.image = initialImage
     }
     
     @IBAction func previewButtonTouchUpInside(_ sender: Any) {
-        //to show the view again
+        mainView.hideView(hide: false)
+        self.imagePreview.image = currentImage
     }
     
+    @IBAction func previewButtonTouchExit(_ sender: Any) {
+        mainView.hideView(hide: false)
+        self.imagePreview.image = currentImage
+    }
     
     
     override func viewDidLoad() {
@@ -108,31 +116,44 @@ extension ViewController {
             CATransaction.setValue(true, forKey: kCATransactionDisableActions)
             self.saturationSlider.setGradientVaryingSaturation(hue: newValue, brightness: 1.0)
             CATransaction.commit()
-            self.applyHue(value: newValue)
+            let preview = self.previewHue(value: newValue)
+            DispatchQueue.main.async {
+                self.imagePreview.image = preview
+            }
+            if finished {
+                self.currentImage = preview
+            }
         }
         
         saturationSlider.actionBlock = {slider, newValue, finished in
-            let brightness = self.brightnessSlider.value
-            let hue = self.hueSlider.value
             CATransaction.begin()
             CATransaction.setValue(true, forKey: kCATransactionDisableActions)
             CATransaction.commit()
-            print(newValue)
-            self.applySaturation(value: newValue)
+            let preview = self.previewSaturation(value: newValue)
+            DispatchQueue.main.async {
+                self.imagePreview.image = preview
+            }
+            if finished {
+                self.currentImage = preview
+            }
         }
         
         brightnessSlider.actionBlock = {slider, newValue, finished in
-            let saturation = self.saturationSlider.value
-            let hue = self.hueSlider.value
             CATransaction.begin()
             CATransaction.setValue(true, forKey: kCATransactionDisableActions)
             CATransaction.commit()
-            self.applyBrightness(value: newValue)
+            let preview = self.previewBrightness(value: newValue)
+            DispatchQueue.main.async {
+                self.imagePreview.image = preview
+            }
+            if finished {
+                self.currentImage = preview
+            }
         }
     }
     
-    func applyHue(value: CGFloat) {
-        DispatchQueue.main.async {
+    
+    func previewHue(value: CGFloat) -> UIImage {
             let filter = CIFilter(name: "CIHueAdjust")
             var ciImage : CIImage?
             if let current = self.currentImage  {
@@ -144,13 +165,10 @@ extension ViewController {
             filter?.setValue(Float(value) * Float.pi, forKey: "inputAngle")
             let result = filter?.outputImage
             let image = UIImage(cgImage: self.context.createCGImage(result!, from: result!.extent)!)
-            self.imagePreview.image = image
-            self.currentImage = image
-        }
+            return image
     }
     
-    func applySaturation(value: CGFloat) {
-        DispatchQueue.main.async {
+    func previewSaturation(value: CGFloat) -> UIImage {
             let filter = CIFilter(name: "CIColorControls")
             var ciImage : CIImage?
             if let current = self.currentImage  {
@@ -162,13 +180,10 @@ extension ViewController {
             filter?.setValue(Float(value), forKey: "inputSaturation")
             let result = filter?.outputImage
             let image = UIImage(cgImage: self.context.createCGImage(result!, from: result!.extent)!)
-            self.imagePreview.image = image
-            self.currentImage = image
-        }
+            return image
     }
     
-    func applyBrightness(value: CGFloat) {
-        DispatchQueue.main.async {
+    func previewBrightness(value: CGFloat) -> UIImage {
             let filter = CIFilter(name: "CIColorControls")
             var ciImage : CIImage?
             if let current = self.currentImage  {
@@ -180,8 +195,6 @@ extension ViewController {
             filter?.setValue(Float(value), forKey: "inputBrightness")
             let result = filter?.outputImage
             let image = UIImage(cgImage: self.context.createCGImage(result!, from: result!.extent)!)
-            self.imagePreview.image = image
-            self.currentImage = image
-        }
+            return image
     }
 }

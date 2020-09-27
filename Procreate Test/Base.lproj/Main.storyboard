@@ -177,6 +177,7 @@
                                                         </constraints>
                                                         <state key="normal" image="Preview"/>
                                                         <connections>
+                                                            <action selector="previewButtonTouchExit:" destination="BYZ-38-t0r" eventType="touchDragExit" id="c99-Ni-Ood"/>
                                                             <action selector="previewButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wbz-tG-0d5"/>
                                                             <action selector="previewButtonTouchedDown:" destination="BYZ-38-t0r" eventType="touchDown" id="J9p-GY-pZP"/>
                                                         </connections>

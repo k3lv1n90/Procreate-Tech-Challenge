@@ -24,4 +24,10 @@ class RoundedView: UIView {
         })
          self.layoutIfNeeded()
     }
+    
+    func hideView(hide: Bool) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+            hide ? (self.alpha = 0) : (self.alpha = 1.0)
+        }, completion: nil)
+    }
 }
