@@ -202,6 +202,7 @@
                                 <constraints>
                                     <constraint firstItem="lhS-OA-BtN" firstAttribute="centerY" secondItem="X3e-Hb-eh9" secondAttribute="centerY" id="05t-DO-sQH"/>
                                     <constraint firstItem="2KW-yW-bbf" firstAttribute="leading" secondItem="X3e-Hb-eh9" secondAttribute="leading" constant="20" id="17a-Ws-K3e"/>
+                                    <constraint firstItem="lhS-OA-BtN" firstAttribute="centerX" secondItem="X3e-Hb-eh9" secondAttribute="centerX" id="FCu-oY-uOG"/>
                                     <constraint firstAttribute="trailing" secondItem="a4L-d2-KZY" secondAttribute="trailing" constant="20" id="Ih4-Bt-UL2"/>
                                     <constraint firstAttribute="bottom" secondItem="nW9-di-HO0" secondAttribute="bottom" id="OYZ-8R-cTz"/>
                                     <constraint firstAttribute="height" constant="130" id="Oeh-52-fYQ"/>
@@ -235,10 +236,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="BrightnessSlider" destination="J76-QP-Z0Z" id="g0F-BV-TAZ"/>
-                        <outlet property="HueSlider" destination="w5e-p1-SeH" id="ZFt-Ln-gpG"/>
-                        <outlet property="SaturationSlider" destination="tws-5T-rtp" id="w1r-Ze-awf"/>
+                        <outlet property="brightnessSlider" destination="J76-QP-Z0Z" id="g0F-BV-TAZ"/>
+                        <outlet property="hueSlider" destination="w5e-p1-SeH" id="ZFt-Ln-gpG"/>
                         <outlet property="mainView" destination="X3e-Hb-eh9" id="4XN-rO-VHo"/>
+                        <outlet property="previewButton" destination="1bG-Wv-Ixe" id="qax-11-KN9"/>
+                        <outlet property="redoButton" destination="tvu-3t-nWp" id="sU2-xl-ftN"/>
+                        <outlet property="resetButton" destination="aeB-jk-0jI" id="Sla-Qr-w1i"/>
+                        <outlet property="saturationSlider" destination="tws-5T-rtp" id="w1r-Ze-awf"/>
+                        <outlet property="undoButton" destination="208-1u-AUu" id="y1o-z0-PvO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
