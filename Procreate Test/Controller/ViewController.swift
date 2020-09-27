@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MetalKit
 
 class ViewController: UIViewController {
 
@@ -19,6 +20,8 @@ class ViewController: UIViewController {
     var initialImage: UIImage?
     var currentImage: UIImage?
     var actionNumber = 0
+    
+    var metalPreview: MTKView = MTKView()
     
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var previewButton: UIButton!
@@ -63,6 +66,8 @@ class ViewController: UIViewController {
         saturationSlider.value = 1
         brightnessSlider.value = 0
         currentImage = nil
+        actionHistory.removeAll()
+        actionNumber = 0
     }
     
     @IBAction func previewButtonTouchedDown(_ sender: Any) {
@@ -88,6 +93,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLayout()
+        metalPreview.delegate = self
+        var metalDevice = MTLCreateSystemDefaultDevice()
+        metalPreview.device = metalDevice
+        metalPreview.isPaused = true
+        metalPreview.enableSetNeedsDisplay = false
     }
     
     //This is only for the purpose of this test, otherwise it would be in plist or appdelegate
@@ -99,6 +109,18 @@ class ViewController: UIViewController {
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
     }
+    
+}
+
+extension ViewController : MTKViewDelegate {
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        
+    }
+    
+    func draw(in view: MTKView) {
+        
+    }
+    
     
 }
 
