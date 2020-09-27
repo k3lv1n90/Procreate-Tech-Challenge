@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     let context = CIContext()
     var initialImage: UIImage?
     var currentImage: UIImage?
-    var sliderState = SliderState.initial
+    var actionNumber = 0
     
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var previewButton: UIButton!
@@ -36,10 +36,25 @@ class ViewController: UIViewController {
     
     @IBAction func undoButtonPressed(_ sender: Any) {
         //go back in time
-       
+        if actionNumber < 2 {
+            guard let initial = self.initialImage else {return}
+            self.imagePreview.image = initial
+            hueSlider.value = 0
+            saturationSlider.value = 1
+            brightnessSlider.value = 0
+        } else {
+            applyValues(values: actionHistory[actionNumber-2])
+            self.actionNumber -= 1
+        }
+        
     }
     
     @IBAction func redoButtonPressed(_ sender: Any) {
+        if actionHistory.count > 9 || actionNumber >= actionHistory.count {
+            return
+        }
+        applyValues(values: actionHistory[actionNumber])
+        self.actionNumber += 1
     }
     
     @IBAction func resetButtonPressed(_ sender: Any) {
@@ -57,12 +72,16 @@ class ViewController: UIViewController {
     
     @IBAction func previewButtonTouchUpInside(_ sender: Any) {
         mainView.hideView(hide: false)
-        self.imagePreview.image = currentImage
+        if let current = currentImage {
+            self.imagePreview.image = current
+        }
     }
     
     @IBAction func previewButtonTouchExit(_ sender: Any) {
         mainView.hideView(hide: false)
-        self.imagePreview.image = currentImage
+        if let current = currentImage {
+            self.imagePreview.image = current
+        }
     }
     
     
@@ -96,12 +115,13 @@ extension ViewController {
         hueSlider.value = 0
         saturationSlider.minimumValue = 0
         saturationSlider.maximumValue = 2
+        saturationSlider.minColor = .gray
         saturationSlider.value = 1
         brightnessSlider.minimumValue = -1
         brightnessSlider.maximumValue = 1
         brightnessSlider.value = 0
-        undoButton.isEnabled = false //as at the beginning it has no function since nothing has been changed
-        redoButton.isEnabled = false
+//        undoButton.isEnabled = false //as at the beginning it has no function since nothing has been changed
+//        redoButton.isEnabled = false
         //resetButton.isEnabled = false
     }
     
@@ -114,7 +134,7 @@ extension ViewController {
         hueSlider.actionBlock = {slider, newValue, finished in
             CATransaction.begin()
             CATransaction.setValue(true, forKey: kCATransactionDisableActions)
-            self.saturationSlider.setGradientVaryingSaturation(hue: newValue, brightness: 1.0)
+            self.saturationSlider.maxColor = UIColor(hue: newValue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
             CATransaction.commit()
             let preview = self.previewHue(value: newValue)
             DispatchQueue.main.async {
@@ -122,7 +142,9 @@ extension ViewController {
             }
             if finished {
                 self.currentImage = preview
+                self.commitValues()
             }
+            
         }
         
         saturationSlider.actionBlock = {slider, newValue, finished in
@@ -135,6 +157,7 @@ extension ViewController {
             }
             if finished {
                 self.currentImage = preview
+                self.commitValues()
             }
         }
         
@@ -148,19 +171,46 @@ extension ViewController {
             }
             if finished {
                 self.currentImage = preview
+                self.commitValues()
             }
         }
     }
     
+    func commitValues() {
+        if actionHistory.count >= 10 { //the amount of undo available before it is replaced
+            actionHistory.remove(at: 0)
+        }
+        actionHistory.append(ColorModel(hue: hueSlider.value, saturation: saturationSlider.value, brightness: brightnessSlider.value))
+        actionNumber += 1
+        print("Committed: ", hueSlider.value," ", saturationSlider.value," ", brightnessSlider.value, " and ActionNumber:", actionNumber)
+    }
+        
+    func applyValues(values: ColorModel) {
+        guard let initialImage = self.initialImage, let ciImage = CIImage(image: initialImage) else {return}
+        print("Applying Values: ", values.hue," ", values.saturation," ", values.brightness, " and ActionNumber:", actionNumber)
+        let hueFilter = CIFilter(name: "CIHueAdjust")
+        hueFilter?.setValue(ciImage, forKey: "inputImage")
+        hueFilter?.setValue(Float(values.hue) * Float.pi, forKey: "inputAngle")
+        let hueResult = hueFilter?.outputImage
+        
+        let saturationBrightnessFilter = CIFilter(name: "CIColorControls")
+        saturationBrightnessFilter?.setValue(hueResult, forKey: "inputImage")
+        saturationBrightnessFilter?.setValue(Float(values.saturation), forKey: "inputSaturation")
+        saturationBrightnessFilter?.setValue(Float(values.brightness), forKey: "inputBrightness")
+        if let result = saturationBrightnessFilter?.outputImage {
+            self.imagePreview.image = UIImage(ciImage: result)
+            self.currentImage = self.imagePreview.image
+        }
+        
+        hueSlider.value = values.hue
+        saturationSlider.value = values.saturation
+        brightnessSlider.value = values.brightness
+        
+    }
     
-    func previewHue(value: CGFloat) -> UIImage {
+    func previewHue(value: CGFloat) -> UIImage { //hue will always take the hue of original image so as not to change the hue of an already changed hue
             let filter = CIFilter(name: "CIHueAdjust")
-            var ciImage : CIImage?
-            if let current = self.currentImage  {
-                ciImage = CIImage(image: current)
-            } else {
-                ciImage = CIImage(image: self.initialImage!)
-            }
+            guard let initialImage = self.initialImage, let ciImage = CIImage(image: initialImage) else {return UIImage()}
             filter?.setValue(ciImage, forKey: "inputImage")
             filter?.setValue(Float(value) * Float.pi, forKey: "inputAngle")
             let result = filter?.outputImage
@@ -170,13 +220,12 @@ extension ViewController {
     
     func previewSaturation(value: CGFloat) -> UIImage {
             let filter = CIFilter(name: "CIColorControls")
-            var ciImage : CIImage?
-            if let current = self.currentImage  {
-                ciImage = CIImage(image: current)
+            guard let initial = self.initialImage, let initialCIImage = CIImage(image: initial) else {return UIImage()}
+            if let current = self.currentImage, let ciImage = CIImage(image: current) {
+                filter?.setValue(ciImage, forKey: "inputImage")
             } else {
-                ciImage = CIImage(image: self.initialImage!)
+                filter?.setValue(initialCIImage, forKey: "inputImage")
             }
-            filter?.setValue(ciImage, forKey: "inputImage")
             filter?.setValue(Float(value), forKey: "inputSaturation")
             let result = filter?.outputImage
             let image = UIImage(cgImage: self.context.createCGImage(result!, from: result!.extent)!)
@@ -185,13 +234,12 @@ extension ViewController {
     
     func previewBrightness(value: CGFloat) -> UIImage {
             let filter = CIFilter(name: "CIColorControls")
-            var ciImage : CIImage?
-            if let current = self.currentImage  {
-                ciImage = CIImage(image: current)
+            guard let initial = self.initialImage, let initialCIImage = CIImage(image: initial) else {return UIImage()}
+            if let current = self.currentImage, let ciImage = CIImage(image: current) {
+                filter?.setValue(ciImage, forKey: "inputImage")
             } else {
-                ciImage = CIImage(image: self.initialImage!)
+                filter?.setValue(initialCIImage, forKey: "inputImage")
             }
-            filter?.setValue(ciImage, forKey: "inputImage")
             filter?.setValue(Float(value), forKey: "inputBrightness")
             let result = filter?.outputImage
             let image = UIImage(cgImage: self.context.createCGImage(result!, from: result!.extent)!)
