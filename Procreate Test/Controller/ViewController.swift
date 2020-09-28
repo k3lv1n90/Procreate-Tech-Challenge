@@ -50,12 +50,12 @@ class ViewController: UIViewController {
             self.metalView.setNeedsDisplay()
         } else {
             applyValues(values: actionHistory[actionNumber-2])
+            self.actionNumber -= 1
         }
-        self.actionNumber -= 1
     }
     
     @IBAction func redoButtonPressed(_ sender: Any) {
-        if actionHistory.count > 9 || actionNumber >= actionHistory.count {
+        if actionHistory.count > 9 && actionNumber >= actionHistory.count {
             return
         }
         applyValues(values: actionHistory[actionNumber])
@@ -173,32 +173,38 @@ extension ViewController {
     func handleTouch() {
         hueSlider.actionBlock = {slider, newValue, finished in
             CATransaction.begin()
+            slider.thumbSize = GradientSlider.magnifiedThumbSize
             CATransaction.setValue(true, forKey: kCATransactionDisableActions)
             self.saturationSlider.maxColor = UIColor(hue: newValue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
             CATransaction.commit()
             self.metalView.setNeedsDisplay()
             if finished {
                 self.commitValues()
+                slider.thumbSize = GradientSlider.defaultThumbSize
             }
         }
         
         saturationSlider.actionBlock = {slider, newValue, finished in
             CATransaction.begin()
             CATransaction.setValue(true, forKey: kCATransactionDisableActions)
+            slider.thumbSize = GradientSlider.magnifiedThumbSize
             CATransaction.commit()
             self.metalView.setNeedsDisplay()
             if finished {
                 self.commitValues()
+                slider.thumbSize = GradientSlider.defaultThumbSize
             }
         }
         
         brightnessSlider.actionBlock = {slider, newValue, finished in
             CATransaction.begin()
             CATransaction.setValue(true, forKey: kCATransactionDisableActions)
+            slider.thumbSize = GradientSlider.magnifiedThumbSize
             CATransaction.commit()
             self.metalView.setNeedsDisplay()
             if finished {
                 self.commitValues()
+                slider.thumbSize = GradientSlider.defaultThumbSize
             }
         }
     }

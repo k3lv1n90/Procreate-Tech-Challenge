@@ -11,7 +11,8 @@ import UIKit
 @IBDesignable class GradientSlider: UIControl {
     
     static var defaultThickness:CGFloat = 2.0
-    static var defaultThumbSize:CGFloat = 28.0
+    static var defaultThumbSize:CGFloat = 15
+    static var magnifiedThumbSize:CGFloat = 30
     
     //MARK: Properties
     @IBInspectable public var hasRainbow:Bool  = false {didSet{updateTrackColors()}}
@@ -108,7 +109,7 @@ import UIKit
         didSet{
             _thumbLayer.cornerRadius = thumbSize / 2.0
             _thumbLayer.bounds = CGRect(x:0, y: 0, width: thumbSize, height: thumbSize)
-            self.invalidateIntrinsicContentSize()
+            //self.invalidateIntrinsicContentSize()
         }
     }
     
@@ -323,19 +324,22 @@ import UIKit
     
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         super.beginTracking(touch, with: event)
-        let pt = touch.location(in: self)
+//        let pt = touch.location(in: self)
+//
+//        let center = _thumbLayer.position
+//        let diameter = max(thumbSize,44.0)
+//        let r = CGRect(x: center.x - diameter/2.0, y: center.y - diameter/2.0, width: diameter, height: diameter)
+//        if r.contains(pt){
         
-        let center = _thumbLayer.position
-        let diameter = max(thumbSize,44.0)
-        let r = CGRect(x: center.x - diameter/2.0, y: center.y - diameter/2.0, width: diameter, height: diameter)
-        if r.contains(pt){
             sendActions(for: UIControl.Event.touchDown)
             return true
-        }
-        return false
+//        }
+//        return false
     }
     
     override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        
+        //MARK:- Original
         super.continueTracking(touch, with: event)
         let pt = touch.location(in: self)
         let newValue = valueForLocation(point: pt)
@@ -345,6 +349,91 @@ import UIKit
             actionBlock(self,newValue,false)
         }
         return true
+        
+//        super.continueTracking(touch, with: event)
+//        let pt = touch.location(in: self)
+//        let oldThumbLocation = _thumbLayer.position
+//        let newValue = valueForLocation(point: pt)
+//        setValue(newValue - valueForLocation(point: oldThumbLocation), animated: true)
+//        print(newValue)
+//        //setValue(newValue, animated: false)
+//        if(continuous){
+//            sendActions(for: UIControl.Event.valueChanged)
+//            actionBlock(self,newValue,false)
+//        }
+//        return true
+        
+//        let pt = touch.location(in: self)
+//        let newValue = valueForLocation(point: pt)
+//        let oldThumbLocation = _thumbLayer.position
+//        if newValue > 0.90 || newValue < -0.90 {
+//            setValue(newValue, animated: false)
+//            if(continuous){
+//                sendActions(for: UIControl.Event.valueChanged)
+//                actionBlock(self,newValue,false)
+//            }
+//        } else {
+//            setValue(newValue - valueForLocation(point: oldThumbLocation), animated: true)
+//            //setValue(newValue, animated: false)
+//            if(continuous){
+//                sendActions(for: UIControl.Event.valueChanged)
+//                actionBlock(self,valueForLocation(point: _thumbLayer.position),false)
+//            }
+//        }
+//
+//        return true
+        
+        
+        
+//        let pt = touch.location(in: self)
+//        let newValue = valueForLocation(point: pt)
+//        let oldThumbLocation = _thumbLayer.position
+//        let diameter = max(thumbSize, 44.0)
+//        let boundingbox = CGRect(x: oldThumbLocation.x - diameter/2.0, y: oldThumbLocation.y - diameter/2.0, width: diameter, height: 500)
+//        if boundingbox.contains(pt) {
+//            setValue(newValue, animated: false)
+//            if(continuous){
+//                sendActions(for: UIControl.Event.valueChanged)
+//                actionBlock(self,newValue,false)
+//            }
+//        } else {
+//            setValue(newValue - valueForLocation(point: oldThumbLocation), animated: true)
+//            //setValue(newValue, animated: false)
+//            if(continuous){
+//                sendActions(for: UIControl.Event.valueChanged)
+//                actionBlock(self,valueForLocation(point: _thumbLayer.position),false)
+//            }
+//        }
+//
+//        return true
+        //
+//        let pt = touch.location(in: self)
+//        let oldThumbLocation = _thumbLayer.position
+//        let newValue = valueForLocation(point: pt)
+//
+//        let diameter = max(thumbSize, 44.0)
+//        let r = CGRect(x: center.x - diameter/2.0, y: center.y - diameter/2.0, width: diameter, height: diameter)
+//        if r.contains(pt) {
+//            setValue(newValue, animated: false)
+//            if(continuous){
+//                sendActions(for: UIControl.Event.valueChanged)
+//                actionBlock(self,newValue,false)
+//            }
+//        } else if newValue > 0.75 || newValue < 0.75 {
+//                setValue(newValue, animated: false)
+//                if(continuous){
+//                    sendActions(for: UIControl.Event.valueChanged)
+//                    actionBlock(self,newValue,false)
+//            } else {
+//                setValue(newValue - valueForLocation(point: oldThumbLocation), animated: true)
+//                print(newValue)
+//                //setValue(newValue, animated: false)
+//                if(continuous){
+//                    sendActions(for: UIControl.Event.valueChanged)
+//                    actionBlock(self,valueForLocation(point: _thumbLayer.position),false)
+//                }
+//            }
+//        }
     }
     
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {

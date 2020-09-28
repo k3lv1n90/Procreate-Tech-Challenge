@@ -68,11 +68,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="751" height="130"/>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lhS-OA-BtN" userLabel="Slider Stack">
-                                        <rect key="frame" x="140" y="13" width="471" height="104"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lhS-OA-BtN" userLabel="Slider Stack">
+                                        <rect key="frame" x="140" y="27.5" width="471" height="75"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-p1-SeH" userLabel="Hue" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="-4" width="475" height="36"/>
+                                                <rect key="frame" x="-2" y="-4" width="475" height="23"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
@@ -87,7 +87,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tws-5T-rtp" userLabel="Sat" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="34" width="475" height="36"/>
+                                                <rect key="frame" x="-2" y="26" width="475" height="23"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
@@ -105,7 +105,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J76-QP-Z0Z" userLabel="Bright" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="72" width="475" height="36"/>
+                                                <rect key="frame" x="-2" y="56" width="475" height="23"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
