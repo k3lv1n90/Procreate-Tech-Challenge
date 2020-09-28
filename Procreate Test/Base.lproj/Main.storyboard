@@ -57,6 +57,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Neon-Source" translatesAutoresizingMaskIntoConstraints="NO" id="iB9-yW-Aw6">
                                 <rect key="frame" x="0.0" y="50" width="1366" height="974"/>
                             </imageView>
+                            <mtkView opaque="NO" contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" enableSetNeedsDisplay="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MaM-RJ-gc8">
+                                <rect key="frame" x="0.0" y="50" width="1366" height="974"/>
+                                <color key="clearColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </mtkView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3e-Hb-eh9" userLabel="MainView" customClass="RoundedView" customModule="Procreate_Test" customModuleProvider="target">
                                 <rect key="frame" x="307.5" y="1024" width="751" height="130"/>
                                 <subviews>
@@ -239,15 +243,19 @@
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="66r-sr-haO"/>
                             <constraint firstItem="XZS-Ia-6cz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6NW-PQ-DOG"/>
                             <constraint firstItem="XZS-Ia-6cz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7Lb-6t-H9z"/>
+                            <constraint firstItem="X3e-Hb-eh9" firstAttribute="top" secondItem="MaM-RJ-gc8" secondAttribute="bottom" id="8gw-cE-AAd"/>
                             <constraint firstItem="X3e-Hb-eh9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OEC-ox-R7o"/>
                             <constraint firstItem="XZS-Ia-6cz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PLY-A5-eDT"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Sax-FH-TDH"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TZQ-fX-RJ3"/>
                             <constraint firstAttribute="bottom" secondItem="X3e-Hb-eh9" secondAttribute="bottom" constant="-130" id="Yrf-fC-m9U"/>
+                            <constraint firstItem="MaM-RJ-gc8" firstAttribute="top" secondItem="XZS-Ia-6cz" secondAttribute="bottom" id="gKx-6P-ZRJ"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iAh-7C-VT4"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="top" secondItem="XZS-Ia-6cz" secondAttribute="bottom" id="idz-Yd-MIM"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="nqx-gT-8yo"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pIO-Sm-sWE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MaM-RJ-gc8" secondAttribute="trailing" id="yCh-Mv-eqQ"/>
+                            <constraint firstItem="MaM-RJ-gc8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yWE-UX-aCY"/>
                             <constraint firstItem="X3e-Hb-eh9" firstAttribute="width" secondItem="iB9-yW-Aw6" secondAttribute="width" multiplier="0.55" id="zYz-Gk-uXZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -257,6 +265,7 @@
                         <outlet property="hueSlider" destination="w5e-p1-SeH" id="ZFt-Ln-gpG"/>
                         <outlet property="imagePreview" destination="iB9-yW-Aw6" id="JXm-W1-LfQ"/>
                         <outlet property="mainView" destination="X3e-Hb-eh9" id="4XN-rO-VHo"/>
+                        <outlet property="metalView" destination="MaM-RJ-gc8" id="68g-eH-afH"/>
                         <outlet property="previewButton" destination="1bG-Wv-Ixe" id="qax-11-KN9"/>
                         <outlet property="redoButton" destination="tvu-3t-nWp" id="sU2-xl-ftN"/>
                         <outlet property="resetButton" destination="aeB-jk-0jI" id="Sla-Qr-w1i"/>
