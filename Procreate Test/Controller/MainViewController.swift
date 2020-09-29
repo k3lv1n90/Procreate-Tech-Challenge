@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     var metalCommandQueue : MTLCommandQueue!
     var initialImage: CIImage?
     var currentImage: CIImage?
+    var controlsView: ControlsViewController?
     
     
     @IBOutlet weak var hueSlider: GradientSlider!
@@ -29,7 +30,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var redoButton: UIButton!
     
-    @IBOutlet weak var mainView: RoundedView!
+    //@IBOutlet weak var mainView: RoundedView!
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var metalView: MTKView!
     
@@ -73,17 +74,17 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func previewButtonTouchedDown(_ sender: Any) {
-        mainView.hideView(hide: true)
+        //mainView.hideView(hide: true)
         self.metalView.isHidden = true
     }
     
     @IBAction func previewButtonTouchUpInside(_ sender: Any) {
-        mainView.hideView(hide: false)
+        //mainView.hideView(hide: false)
         self.metalView.isHidden = false
     }
     
     @IBAction func previewButtonTouchExit(_ sender: Any) {
-        mainView.hideView(hide: false)
+        //mainView.hideView(hide: false)
         self.metalView.isHidden = false
     }
     
@@ -131,7 +132,7 @@ extension MainViewController : MTKViewDelegate {
 extension MainViewController {
     
     func configureLayout(){
-        mainView.configureView(radius: 20.0)
+        //mainView.configureView(radius: 20.0)
         guard let image = UIImage(named: "Neon-Source") else {return}
         initialImage = CIImage(image: image)
         
@@ -166,8 +167,33 @@ extension MainViewController {
     }
     
     func animateColorControlView() {
-        colorControlClicked ? mainView.animateView(show: false) : mainView.animateView(show: true)
-        colorControlClicked ? (colorControlClicked = false) : (colorControlClicked = true)
+        colorControlClicked.toggle()
+        animateView(show: colorControlClicked)
+    }
+    
+    func animateView(show: Bool) {
+        if show {
+            let nib = UINib(nibName: "ControlsView", bundle: Bundle(for: type(of: self)))
+            guard let createView = nib.instantiate(withOwner: nil, options: nil).first as? ControlsViewController else {return}
+            createView.alpha = 0
+            self.controlsView = createView
+            self.controlsView?.roundTheView(radius: 20.0)
+            if let viewToBePresented = self.controlsView {
+                self.view.addSubview(viewToBePresented)
+                viewToBePresented.frame = CGRect(x: self.imagePreview.bounds.minX, y: self.imagePreview.bounds.maxY - 130, width: self.imagePreview.frame.width, height: 130.0)
+                
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    viewToBePresented.alpha = 1.0
+                }, completion: nil)
+            }
+        } else {
+            guard let viewToBeDismissed = self.controlsView else {return}
+            UIView.animate(withDuration: 0.2, delay: 0, animations: {
+                viewToBeDismissed.alpha = 0
+            }, completion: { (result) in
+                viewToBeDismissed.removeFromSuperview()
+            })
+        }
     }
     
     func handleTouch() {

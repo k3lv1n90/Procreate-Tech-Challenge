@@ -264,7 +264,6 @@
                         <outlet property="brightnessSlider" destination="J76-QP-Z0Z" id="g0F-BV-TAZ"/>
                         <outlet property="hueSlider" destination="w5e-p1-SeH" id="ZFt-Ln-gpG"/>
                         <outlet property="imagePreview" destination="iB9-yW-Aw6" id="JXm-W1-LfQ"/>
-                        <outlet property="mainView" destination="X3e-Hb-eh9" id="4XN-rO-VHo"/>
                         <outlet property="metalView" destination="MaM-RJ-gc8" id="68g-eH-afH"/>
                         <outlet property="previewButton" destination="1bG-Wv-Ixe" id="qax-11-KN9"/>
                         <outlet property="redoButton" destination="tvu-3t-nWp" id="sU2-xl-ftN"/>

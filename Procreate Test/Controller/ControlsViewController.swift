@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ControlsViewController : RoundedView {
+class ControlsViewController : UIView {
     
     
     @IBOutlet weak var hueSlider: GradientSlider!
@@ -20,29 +20,41 @@ class ControlsViewController : RoundedView {
     @IBOutlet weak var previewButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var redoButton: UIButton!
-    
-    
+    @IBOutlet weak var backgroundView: UIView!
     
     var controlsDelegate : ControlsDelegate?
     
+    func roundTheView(radius: CGFloat) {
+        backgroundView.layer.cornerRadius = 20.0
+        backgroundView.clipsToBounds = true
+        backgroundView.layer.masksToBounds = true
+    }
 
     @IBAction func resetButtonPressed(_ sender: Any) {
+        controlsDelegate?.reset()
     }
     
     @IBAction func undoButtonPressed(_ sender: Any) {
+        controlsDelegate?.undo()
     }
     
     @IBAction func redoButtonPressed(_ sender: Any) {
+        controlsDelegate?.redo()
     }
     
     @IBAction func previewButtonTouchDown(_ sender: Any) {
+        controlsDelegate?.preview(type: .touchDown)
     }
     
     @IBAction func previewButtonTouchInside(_ sender: Any) {
+        controlsDelegate?.preview(type: .touchInside)
     }
     
     @IBAction func previewButtonTouchExit(_ sender: Any) {
+        controlsDelegate?.preview(type: .touchExit)
     }
+    
+    
     
     
 }
