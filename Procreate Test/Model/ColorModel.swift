@@ -9,7 +9,7 @@
 import UIKit
 
 struct ColorModel {
-    let hue : CGFloat
-    let saturation: CGFloat
-    let brightness: CGFloat
+    let hue : CGFloat?
+    let saturation: CGFloat?
+    let brightness: CGFloat?
 }

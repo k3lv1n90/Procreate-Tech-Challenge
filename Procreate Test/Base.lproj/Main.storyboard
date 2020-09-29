@@ -61,215 +61,30 @@
                                 <rect key="frame" x="0.0" y="50" width="1366" height="974"/>
                                 <color key="clearColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </mtkView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3e-Hb-eh9" userLabel="MainView" customClass="RoundedView" customModule="Procreate_Test" customModuleProvider="target">
-                                <rect key="frame" x="307.5" y="1024" width="751" height="130"/>
-                                <subviews>
-                                    <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nW9-di-HO0" userLabel="Color View">
-                                        <rect key="frame" x="0.0" y="0.0" width="751" height="130"/>
-                                        <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lhS-OA-BtN" userLabel="Slider Stack">
-                                        <rect key="frame" x="140" y="27.5" width="471" height="75"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-p1-SeH" userLabel="Hue" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="-4" width="475" height="23"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                                        <real key="value" value="0.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="thickness">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="minColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="1" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tws-5T-rtp" userLabel="Sat" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="26" width="475" height="23"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                                        <real key="value" value="0.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="minColor">
-                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="maxColor">
-                                                        <color key="value" red="0.1529411765" green="0.72156862749999995" blue="0.89019607840000003" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="thickness">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J76-QP-Z0Z" userLabel="Bright" customClass="GradientSlider" customModule="Procreate_Test" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="56" width="475" height="23"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                                        <real key="value" value="0.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="minColor">
-                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="maxColor">
-                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="trackBorderWidth">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a4L-d2-KZY" userLabel="Text Stack">
-                                        <rect key="frame" x="611" y="23" width="120" height="84.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hue" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Voq-rC-WA9">
-                                                <rect key="frame" x="5" y="0.0" width="110" height="21.5"/>
-                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturation" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mC-9H-WTG">
-                                                <rect key="frame" x="5" y="31.5" width="110" height="21.5"/>
-                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq5-N3-1nC">
-                                                <rect key="frame" x="5" y="63" width="110" height="21.5"/>
-                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="3mC-9H-WTG" secondAttribute="trailing" constant="5" id="0zi-Ma-PBJ"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="FH6-FE-0GE"/>
-                                            <constraint firstItem="3mC-9H-WTG" firstAttribute="leading" secondItem="a4L-d2-KZY" secondAttribute="leading" constant="5" id="GFg-V8-I4D"/>
-                                            <constraint firstItem="Xq5-N3-1nC" firstAttribute="leading" secondItem="a4L-d2-KZY" secondAttribute="leading" constant="5" id="Wym-6P-56G"/>
-                                            <constraint firstAttribute="trailing" secondItem="Voq-rC-WA9" secondAttribute="trailing" constant="5" id="eLj-3J-RYl"/>
-                                            <constraint firstAttribute="trailing" secondItem="Xq5-N3-1nC" secondAttribute="trailing" constant="5" id="fea-Xf-80x"/>
-                                            <constraint firstItem="Voq-rC-WA9" firstAttribute="leading" secondItem="a4L-d2-KZY" secondAttribute="leading" constant="5" id="lPy-sN-zqm"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2KW-yW-bbf" userLabel="Buttons">
-                                        <rect key="frame" x="20" y="15" width="100" height="100"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ikd-0S-ykM" userLabel="Top Buttons">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="45"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeB-jk-0jI" userLabel="Reset">
-                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="45" id="Xli-eh-X4U"/>
-                                                            <constraint firstAttribute="height" constant="45" id="pV3-XH-04r"/>
-                                                        </constraints>
-                                                        <state key="normal" image="Reset"/>
-                                                        <connections>
-                                                            <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7r8-xh-96X"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bG-Wv-Ixe" userLabel="Preview">
-                                                        <rect key="frame" x="55" y="0.0" width="45" height="45"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="45" id="Aid-3X-Ar2"/>
-                                                            <constraint firstAttribute="width" constant="45" id="jax-mz-hek"/>
-                                                        </constraints>
-                                                        <state key="normal" image="Preview"/>
-                                                        <connections>
-                                                            <action selector="previewButtonTouchExit:" destination="BYZ-38-t0r" eventType="touchDragExit" id="c99-Ni-Ood"/>
-                                                            <action selector="previewButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wbz-tG-0d5"/>
-                                                            <action selector="previewButtonTouchedDown:" destination="BYZ-38-t0r" eventType="touchDown" id="J9p-GY-pZP"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Za-rx-uOf" userLabel="Bottom Buttons">
-                                                <rect key="frame" x="0.0" y="55" width="100" height="45"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="208-1u-AUu" userLabel="Undo">
-                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="45" id="5ME-Zr-B5i"/>
-                                                            <constraint firstAttribute="width" constant="45" id="6f0-7E-E5O"/>
-                                                        </constraints>
-                                                        <state key="normal" image="Undo"/>
-                                                        <connections>
-                                                            <action selector="undoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z47-T3-vJF"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvu-3t-nWp" userLabel="Redo">
-                                                        <rect key="frame" x="55" y="0.0" width="45" height="45"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="45" id="8WH-5v-opD"/>
-                                                            <constraint firstAttribute="height" constant="45" id="MnH-71-ZmR"/>
-                                                        </constraints>
-                                                        <state key="normal" image="Redo"/>
-                                                        <connections>
-                                                            <action selector="redoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VCK-In-qvC"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="lhS-OA-BtN" firstAttribute="centerY" secondItem="X3e-Hb-eh9" secondAttribute="centerY" id="05t-DO-sQH"/>
-                                    <constraint firstItem="2KW-yW-bbf" firstAttribute="leading" secondItem="X3e-Hb-eh9" secondAttribute="leading" constant="20" id="17a-Ws-K3e"/>
-                                    <constraint firstItem="lhS-OA-BtN" firstAttribute="centerX" secondItem="X3e-Hb-eh9" secondAttribute="centerX" id="FCu-oY-uOG"/>
-                                    <constraint firstAttribute="trailing" secondItem="a4L-d2-KZY" secondAttribute="trailing" constant="20" id="Ih4-Bt-UL2"/>
-                                    <constraint firstAttribute="bottom" secondItem="nW9-di-HO0" secondAttribute="bottom" id="OYZ-8R-cTz"/>
-                                    <constraint firstAttribute="height" constant="130" id="Oeh-52-fYQ"/>
-                                    <constraint firstItem="2KW-yW-bbf" firstAttribute="centerY" secondItem="X3e-Hb-eh9" secondAttribute="centerY" id="RDk-do-2Oz"/>
-                                    <constraint firstItem="nW9-di-HO0" firstAttribute="leading" secondItem="X3e-Hb-eh9" secondAttribute="leading" id="ReQ-gE-rfW"/>
-                                    <constraint firstItem="lhS-OA-BtN" firstAttribute="leading" secondItem="2KW-yW-bbf" secondAttribute="trailing" constant="20" id="cUr-f0-0zj"/>
-                                    <constraint firstAttribute="trailing" secondItem="nW9-di-HO0" secondAttribute="trailing" id="dv8-iT-NlS"/>
-                                    <constraint firstItem="a4L-d2-KZY" firstAttribute="leading" secondItem="lhS-OA-BtN" secondAttribute="trailing" id="qEb-qA-1cH"/>
-                                    <constraint firstItem="nW9-di-HO0" firstAttribute="top" secondItem="X3e-Hb-eh9" secondAttribute="top" id="ruV-71-UJK"/>
-                                    <constraint firstItem="a4L-d2-KZY" firstAttribute="centerY" secondItem="X3e-Hb-eh9" secondAttribute="centerY" id="uTV-P1-9Pa"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="MaM-RJ-gc8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0bs-ia-hMJ"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="top" secondItem="XZS-Ia-6cz" secondAttribute="bottom" id="3Cf-3o-Nmw"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="66r-sr-haO"/>
                             <constraint firstItem="XZS-Ia-6cz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6NW-PQ-DOG"/>
                             <constraint firstItem="XZS-Ia-6cz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7Lb-6t-H9z"/>
-                            <constraint firstItem="X3e-Hb-eh9" firstAttribute="top" secondItem="MaM-RJ-gc8" secondAttribute="bottom" id="8gw-cE-AAd"/>
-                            <constraint firstItem="X3e-Hb-eh9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OEC-ox-R7o"/>
+                            <constraint firstItem="MaM-RJ-gc8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AmI-Dc-R3u"/>
                             <constraint firstItem="XZS-Ia-6cz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PLY-A5-eDT"/>
-                            <constraint firstItem="iB9-yW-Aw6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Sax-FH-TDH"/>
+                            <constraint firstItem="iB9-yW-Aw6" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="Sax-FH-TDH"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TZQ-fX-RJ3"/>
-                            <constraint firstAttribute="bottom" secondItem="X3e-Hb-eh9" secondAttribute="bottom" constant="-130" id="Yrf-fC-m9U"/>
-                            <constraint firstItem="MaM-RJ-gc8" firstAttribute="top" secondItem="XZS-Ia-6cz" secondAttribute="bottom" id="gKx-6P-ZRJ"/>
+                            <constraint firstItem="MaM-RJ-gc8" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="cm3-dd-4pf"/>
+                            <constraint firstItem="MaM-RJ-gc8" firstAttribute="top" secondItem="XZS-Ia-6cz" secondAttribute="bottom" id="eAf-EM-3st"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iAh-7C-VT4"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="top" secondItem="XZS-Ia-6cz" secondAttribute="bottom" id="idz-Yd-MIM"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="nqx-gT-8yo"/>
                             <constraint firstItem="iB9-yW-Aw6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pIO-Sm-sWE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MaM-RJ-gc8" secondAttribute="trailing" id="yCh-Mv-eqQ"/>
-                            <constraint firstItem="MaM-RJ-gc8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yWE-UX-aCY"/>
-                            <constraint firstItem="X3e-Hb-eh9" firstAttribute="width" secondItem="iB9-yW-Aw6" secondAttribute="width" multiplier="0.55" id="zYz-Gk-uXZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="brightnessSlider" destination="J76-QP-Z0Z" id="g0F-BV-TAZ"/>
-                        <outlet property="hueSlider" destination="w5e-p1-SeH" id="ZFt-Ln-gpG"/>
                         <outlet property="imagePreview" destination="iB9-yW-Aw6" id="JXm-W1-LfQ"/>
                         <outlet property="metalView" destination="MaM-RJ-gc8" id="68g-eH-afH"/>
-                        <outlet property="previewButton" destination="1bG-Wv-Ixe" id="qax-11-KN9"/>
-                        <outlet property="redoButton" destination="tvu-3t-nWp" id="sU2-xl-ftN"/>
-                        <outlet property="resetButton" destination="aeB-jk-0jI" id="Sla-Qr-w1i"/>
-                        <outlet property="saturationSlider" destination="tws-5T-rtp" id="w1r-Ze-awf"/>
-                        <outlet property="undoButton" destination="208-1u-AUu" id="y1o-z0-PvO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -279,10 +94,6 @@
     </scenes>
     <resources>
         <image name="Neon-Source" width="2732" height="2048"/>
-        <image name="Preview" width="70" height="70"/>
-        <image name="Redo" width="70" height="70"/>
-        <image name="Reset" width="70" height="70"/>
-        <image name="Undo" width="70" height="70"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

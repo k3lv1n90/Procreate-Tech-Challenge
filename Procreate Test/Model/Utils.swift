@@ -7,15 +7,14 @@
 //
 
 import UIKit
+import MetalKit
 
 protocol ControlsDelegate {
     func reset()
     func undo()
     func redo()
-    func preview(type: TouchType)
-    func hue(values: ColorModel)
-    func saturation(values: ColorModel)
-    func brightness(values: ColorModel)
+    func previewButton(type: TouchType)
+    func sliderChange(values: ColorModel, commit: Bool)
 }
 
 enum TouchType {

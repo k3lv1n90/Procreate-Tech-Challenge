@@ -11,7 +11,6 @@
 		B634EDA3252220D600BA228A /* ControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B634EDA2252220D600BA228A /* ControlsViewController.swift */; };
 		B634EDA52522217B00BA228A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B634EDA42522217B00BA228A /* Utils.swift */; };
 		B65FA42425202CC400E6A256 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65FA42325202CC400E6A256 /* ColorModel.swift */; };
-		B65FA426252040E700E6A256 /* HueCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65FA425252040E700E6A256 /* HueCalculations.swift */; };
 		B670C690251F15B0000D6C9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C68F251F15B0000D6C9A /* AppDelegate.swift */; };
 		B670C692251F15B0000D6C9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B670C691251F15B0000D6C9A /* SceneDelegate.swift */; };
 		B670C697251F15B0000D6C9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B670C695251F15B0000D6C9A /* Main.storyboard */; };
@@ -38,7 +37,6 @@
 		B634EDA2252220D600BA228A /* ControlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsViewController.swift; sourceTree = "<group>"; };
 		B634EDA42522217B00BA228A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B65FA42325202CC400E6A256 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
-		B65FA425252040E700E6A256 /* HueCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueCalculations.swift; sourceTree = "<group>"; };
 		B670C68C251F15B0000D6C9A /* Procreate Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Procreate Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B670C68F251F15B0000D6C9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B670C691251F15B0000D6C9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				B65FA42325202CC400E6A256 /* ColorModel.swift */,
-				B65FA425252040E700E6A256 /* HueCalculations.swift */,
 				B634EDA42522217B00BA228A /* Utils.swift */,
 			);
 			path = Model;
@@ -268,7 +265,6 @@
 				B634EDA3252220D600BA228A /* ControlsViewController.swift in Sources */,
 				B670C690251F15B0000D6C9A /* AppDelegate.swift in Sources */,
 				B634EDA52522217B00BA228A /* Utils.swift in Sources */,
-				B65FA426252040E700E6A256 /* HueCalculations.swift in Sources */,
 				B670C6BC251F40E7000D6C9A /* MainViewController.swift in Sources */,
 				B670C692251F15B0000D6C9A /* SceneDelegate.swift in Sources */,
 			);
