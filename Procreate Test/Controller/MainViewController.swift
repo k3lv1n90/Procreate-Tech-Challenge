@@ -12,14 +12,11 @@ import MetalKit
 class MainViewController: UIViewController {
 
     var colorControlClicked: Bool = false
-    var actionHistory = [ColorModel]()
-    var actionNumber = 0
-    var context : CIContext!
+    var context = CIContext()
     var metalCommandQueue : MTLCommandQueue!
     var initialImage: CIImage?
-    var commitedEffect: Bool = false
     var currentImage: CIImage?
-    var colorValues: ColorModel?
+    var previewColorValues: ColorModel?
     var controlsView: ControlsViewController?
     
     @IBOutlet weak var imagePreview: UIImageView!
@@ -27,7 +24,8 @@ class MainViewController: UIViewController {
     
     @IBAction func toggleMenu(_ sender: Any) {
         //used in this case just to toggle the ui
-        animateColorControlView()
+        colorControlClicked.toggle()
+        animateView(show: colorControlClicked)
     }
     
     override func viewDidLoad() {
@@ -40,7 +38,6 @@ class MainViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
     //This is only for the purpose of this test, otherwise it would be in plist or appdelegate
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
@@ -54,20 +51,12 @@ extension MainViewController : MTKViewDelegate {
     }
     
     func draw(in view: MTKView) {
-        var imageToProcess = CIImage()
-        if let current = self.currentImage {
-             imageToProcess = current
-        } else if let initial = self.initialImage {
-             imageToProcess = initial
-        }
-        guard let color = self.colorValues, let result = self.previewEffect(values: color, image: imageToProcess),
-              let buffer = self.metalCommandQueue.makeCommandBuffer(),
+        guard let initial = initialImage,
+              let color = previewColorValues,
+              let result = previewEffect(values: color, image: initial),
+              let buffer = metalCommandQueue.makeCommandBuffer(),
               let currentDrawable = view.currentDrawable else {return}
-        if commitedEffect {
-            self.currentImage = result
-            commitedEffect.toggle()
-        }
-        self.context.render(result, to: currentDrawable.texture, commandBuffer: buffer, bounds: CGRect(origin: .zero, size: view.drawableSize), colorSpace: CGColorSpaceCreateDeviceRGB())
+        context.render(result, to: currentDrawable.texture, commandBuffer: buffer, bounds: CGRect(origin: .zero, size: view.drawableSize), colorSpace: CGColorSpaceCreateDeviceRGB())
         buffer.present(currentDrawable)
         buffer.commit()
     }
@@ -78,23 +67,12 @@ extension MainViewController : MTKViewDelegate {
 extension MainViewController : ControlsDelegate {
       
     func reset() {
-        currentImage = nil
-        colorValues = ColorModel(hue: 0, saturation: 1, brightness: 0)
-        actionHistory.removeAll()
-        actionNumber = 0
+        configureLayout()
         metalView.setNeedsDisplay()
     }
     
-    func undo() {
-        
-    }
-    
-    func redo() {
-        
-    }
-    
     func previewButton(type: TouchType) {
-        guard let preview = self.controlsView else {return}
+        guard let preview = controlsView else {return}
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             switch type {
             case .touchDown:
@@ -107,9 +85,8 @@ extension MainViewController : ControlsDelegate {
         }, completion: nil)
     }
 
-    func sliderChange(values: ColorModel, commit: Bool) {
-        colorValues = values
-        self.commitedEffect = commit
+    func valueChanged(values: ColorModel) {
+        previewColorValues = values
         metalView.setNeedsDisplay()
     }
 
@@ -119,8 +96,10 @@ extension MainViewController : ControlsDelegate {
 extension MainViewController {
     
     func configureLayout(){
-        guard let image = UIImage(named: "Neon-Source") else {return}
-        initialImage = CIImage(image: image)
+        guard let image = imagePreview.image, let initial = CIImage(image: image) else {return}
+        initialImage = initial
+        currentImage = initial
+        previewColorValues = ColorModel(hue: 0, saturation: 1, brightness: 0)
     }
     
     func configureMetal() {
@@ -136,29 +115,26 @@ extension MainViewController {
         metalView.setNeedsDisplay() // to make it load the initial image
     }
     
-    func animateColorControlView() {
-        colorControlClicked.toggle()
-        animateView(show: colorControlClicked)
-    }
-    
     func animateView(show: Bool) {
         if show {
-            let nib = UINib(nibName: "ControlsView", bundle: Bundle(for: type(of: self)))
-            guard let createView = nib.instantiate(withOwner: nil, options: nil).first as? ControlsViewController else {return}
-            createView.alpha = 0
-            self.controlsView = createView
-            self.controlsView?.controlsDelegate = self
-            self.controlsView?.configureControls(radius: 20.0)
-            if let viewToBePresented = self.controlsView {
-                self.view.addSubview(viewToBePresented)
-                viewToBePresented.frame = CGRect(x: self.imagePreview.bounds.minX, y: self.imagePreview.bounds.maxY - 130, width: self.imagePreview.frame.width, height: 130.0)
+            if let viewToBePresented = controlsView {
+                view.addSubview(viewToBePresented)
+                viewToBePresented.frame = CGRect(x: imagePreview.bounds.minX, y: imagePreview.bounds.maxY - 130, width: imagePreview.frame.width, height: 130.0)
                 
                 UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                     viewToBePresented.alpha = 1.0
                 }, completion: nil)
+            } else {
+                let nib = UINib(nibName: "ControlsView", bundle: Bundle(for: type(of: self)))
+                guard let createView = nib.instantiate(withOwner: nil, options: nil).first as? ControlsViewController else {return}
+                createView.alpha = 0
+                controlsView = createView
+                controlsView?.controlsDelegate = self
+                controlsView?.configureControls(radius: 20.0)
+                animateView(show: true)
             }
         } else {
-            guard let viewToBeDismissed = self.controlsView else {return}
+            guard let viewToBeDismissed = controlsView else {return}
             UIView.animate(withDuration: 0.2, delay: 0, animations: {
                 viewToBeDismissed.alpha = 0
             }, completion: { (result) in
@@ -201,5 +177,5 @@ extension MainViewController {
         
         return result
     }
-
+    
 }

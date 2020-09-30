@@ -11,10 +11,8 @@ import MetalKit
 
 protocol ControlsDelegate {
     func reset()
-    func undo()
-    func redo()
     func previewButton(type: TouchType)
-    func sliderChange(values: ColorModel, commit: Bool)
+    func valueChanged(values: ColorModel)
 }
 
 enum TouchType {

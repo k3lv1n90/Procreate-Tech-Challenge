@@ -75,7 +75,7 @@
                                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="trackBorderWidth">
-                                            <real key="value" value="3"/>
+                                            <real key="value" value="0.0"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
@@ -150,7 +150,8 @@
                                             </constraints>
                                             <state key="normal" image="Undo"/>
                                             <connections>
-                                                <action selector="undoButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="iQx-N7-Lic"/>
+                                                <action selector="undoButtonTouchUpInside:" destination="iN0-l3-epB" eventType="touchUpInside" id="iQx-N7-Lic"/>
+                                                <action selector="undoButtonTouchedDown:" destination="-1" eventType="touchDown" id="zZL-au-1To"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyj-wZ-Ahn" userLabel="Redo">
@@ -161,7 +162,8 @@
                                             </constraints>
                                             <state key="normal" image="Redo"/>
                                             <connections>
-                                                <action selector="redoButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="OEK-OK-xEq"/>
+                                                <action selector="redoButtonTouchDown:" destination="-1" eventType="touchDown" id="1hs-xP-png"/>
+                                                <action selector="redoButtonTouchUpInside:" destination="iN0-l3-epB" eventType="touchUpInside" id="OEK-OK-xEq"/>
                                             </connections>
                                         </button>
                                     </subviews>
